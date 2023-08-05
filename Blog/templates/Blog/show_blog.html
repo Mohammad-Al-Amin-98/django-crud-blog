@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="text-align: justify; margin-left: 20px; margin-right: 5px">
+    <h1>Blogs</h1>
+    {% if data %}
+    {% for item in data %}
+    <h3 style="margin-bottom: 0;">{{item.title}}</h2>
+    <p style="margin-bottom: 0; margin-top: 0"><b>{{item.author}}</b></p>
+    <p style="margin-top: 0; margin-bottom: 0"><b>{{item.pub_date}}</b></p>
+    <a style="margin-top: 0;" class="btn btn-warning" href="{% url 'edit_blog' id=item.id %}">Edit</a> <a style="margin-top: 0;" class="btn btn-danger" href="{% url 'delete_blog' id=item.id %}">Delete</a>
+    <p>{{item.content}}</p>
+    {% endfor %}
+    {% else %}
+    <h3>No blog post to show!</h3>
+    {% endif%}
+</div>
+{% endblock %}
